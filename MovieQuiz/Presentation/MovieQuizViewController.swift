@@ -8,6 +8,9 @@ final class MovieQuizViewController: UIViewController {
     @IBOutlet private weak var textLabel: UILabel!
     @IBOutlet private weak var counterLabel: UILabel!
     
+    @IBOutlet weak var yesButton: UIButton!
+    @IBOutlet weak var noButton: UIButton!
+    
     
     private var currentQuestionIndex = 0
     private var correctAnswers = 0
@@ -103,6 +106,8 @@ final class MovieQuizViewController: UIViewController {
     private func showNextQuestionOrResults() {
         
         imageView.layer.borderWidth = 0
+        yesButton.isEnabled = true
+        noButton.isEnabled = true
         
         if currentQuestionIndex == questions.count - 1 {
             // идём в состояние "Результат квиза"
@@ -131,6 +136,8 @@ final class MovieQuizViewController: UIViewController {
     // приватный метод, который меняет цвет рамки
     private func showAnswerResult(isCorrect: Bool) {
         
+        yesButton.isEnabled = false
+        noButton.isEnabled = false
         
         imageView.layer.borderWidth = 8
         imageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
